@@ -1,0 +1,204 @@
+.app-sidebar {
+  box-sizing: border-box;
+  width: clamp(210px, 105px + 13.672vw, 280px);
+  height: 100vh;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #FAF8F5;
+  border-right: 1px solid #D4A85377;
+  position: sticky;
+  top: 0;
+}
+
+.app-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.app-sidebar__brand-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.app-sidebar__brand-name {
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #3D3D3D;
+  letter-spacing: 0.5px;
+}
+
+.app-sidebar__store-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 56px;
+  padding: 14px 20px;
+  margin-bottom: 32px;
+  background: #A67C52;
+  color: #FFFFFF;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.35s ease;
+  box-shadow: 0 4px 16px #A67C5233;
+}
+
+.app-sidebar__store-icon {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+}
+
+.app-sidebar__store-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px #D4A85333;
+  background: #D4A853;
+  outline: 1px solid #00000099;
+}
+
+.app-sidebar__store-btn:active {
+  transform: translateY(0);
+}
+
+.app-sidebar__store-btn_active {
+  background: #D4A853;
+  outline: 1px solid #00000099;
+}
+
+.app-sidebar__nav {
+  flex-grow: 1;
+}
+
+.app-sidebar__tabs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.app-sidebar__tabs-item {
+  position: relative;
+}
+
+.app-sidebar__tabs-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.app-sidebar__tabs-link:hover {
+  background-color: #A67C5219;
+}
+
+.app-sidebar__tabs-link_active {
+  background-color: #A67C5233;
+}
+
+.app-sidebar__tabs-icon {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: invert(20%) sepia(0%) saturate(0%) hue-rotate(50deg) brightness(99%) contrast(87%);
+  transition: 0.3s ease;
+}
+
+.app-sidebar__tabs-link_active .app-sidebar__tabs-icon {
+  filter: invert(50%) sepia(60%) saturate(327%) hue-rotate(349deg) brightness(91%) contrast(85%);
+}
+
+.app-sidebar__tabs-link:hover .app-sidebar__tabs-icon {
+  filter: invert(50%) sepia(60%) saturate(327%) hue-rotate(349deg) brightness(91%) contrast(85%);
+}
+
+.app-sidebar__tabs-text {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #3D3D3DBB;
+  transition: color 0.3s ease;
+}
+
+.app-sidebar__tabs-link:hover .app-sidebar__tabs-text {
+  color: #3D3D3D;
+}
+
+.app-sidebar__tabs-link_active .app-sidebar__tabs-text {
+  font-weight: 600;
+  color: #3D3D3D;
+}
+
+.app-sidebar__active-indicator {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 24px;
+  background: #A67C52;
+  border-radius: 3px 0 0 3px;
+}
+
+.app-sidebar__user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: #A67C5222;
+  border-radius: 16px;
+  border: 1px solid #D4A85322;
+  box-shadow: 0 4px 16px #3D3D3D08;
+}
+
+.app-sidebar__user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.app-sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-sidebar__user-name {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3D3D3D;
+  line-height: 18px;
+  text-wrap: balance;
+}
+
+.app-sidebar__user-email {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #3D3D3DBB;
+  line-height: 16px;
+  word-break: break-word;
+}
