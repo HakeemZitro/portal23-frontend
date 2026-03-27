@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Sidebar from "./Sidebar/Sidebar.jsx";
+import SidebarUser from "./SidebarUser/SidebarUser.jsx";
 import Content from "./Content/Content.jsx";
 import { muxApi } from "../../../utils/Api.js";
 
@@ -25,7 +25,7 @@ export default function AppAlquimiaDigital() {
 
   return (
     <div className="app">
-      <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />
+      <SidebarUser activeSection={activeSection} onSectionChange={setActiveSection} />
       <Content activeSection={activeSection} assets={assets} ownedAssets={ownedAssets} addOwnedAsset={addOwnedAsset} isLoading={isLoading} />
     </div>
   );

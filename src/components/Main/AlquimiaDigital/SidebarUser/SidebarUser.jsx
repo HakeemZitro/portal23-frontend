@@ -5,7 +5,7 @@ import iconFolder from "../../../../assets/icons/icon_folder.svg";
 import logo from "../../../../assets/images/logo_wobgblack.webp";
 import userAvatar from "../../../../assets/images/user_avatar.webp";
 
-export default function Sidebar({ activeSection, onSectionChange }) {
+export default function SidebarUser({ activeSection, onSectionChange }) {
 
   return (
     <aside className="app-sidebar">

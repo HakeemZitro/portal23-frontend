@@ -1,13 +1,24 @@
 import iconMusic from "../assets/icons/icon_music.svg";
 
-class MuxApi {
-  constructor(baseURL, tokenID, secretKey) {
-    this.baseURL = baseURL;
-    this.auth = btoa(`${tokenID}:${secretKey}`);
+class Api {
+  constructor(baseUrl) {
+    this._baseUrl = baseUrl;
 
     this._routes = {
-      getAssets: { method: "GET", path: "/video/v1/assets" },
-      createAsset: { method: "POST", path: "/video/v1/assets" }
+      // ----- Rutas para usuarios ----- //
+      getUser: { method: "GET", path: "/users/me" },
+      updateName: { method: "PATCH", path: "/users/me" },
+      updateAvatar: { method: "PATCH", path: "/users/me/avatar" },
+      
+      getAllAssets: { method: "GET", path: "/assets" },
+      getAssetById: { method: "GET", path: "/assets/:id" },
+      
+
+      // ----- Rutas para administrador ----- //
+      getAllUsers: { method: "GET", path: "/users" },
+      getUserById: { method: "GET", path: "/users/:id" },
+
+      createUploadAssetURL: { method: "POST", path: "/assets/upload-url" },
     }
   }
 
@@ -17,24 +28,31 @@ class MuxApi {
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   }
 
-  _request(routeName, { body = null } = {}) {
+  _request(routeName, { body = null } = {}, token = null) {
     const route = this._routes[routeName];
 
-    if (!route) { console.log(`API route not found: ${routeName}`); }
+    if (!route) { console.log(`Ruta de API no encontrada: ${routeName}`); }
+
+
+    if (!token) {
+      console.log("Sin autorización, inicia sesión");
+      return Promise.reject({ status: 401, message: "Sin autorización, inicia sesión" });
+    }
 
     const endpoint = route.path;
 
     const options = {
       method: route.method,
       headers: {
-        "Authorization": `Basic ${this.auth}`,
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json"
       }
     };
 
+
     if (body) { options.body = JSON.stringify(body); }
 
-    return fetch(this.baseURL + endpoint, options)
+    return fetch(this._baseUrl + endpoint, options)
       .then(res => res.json())
       .then(assets => assets.data.map(asset => ({
         id: asset.id,
@@ -58,7 +76,5 @@ class MuxApi {
   }
 }
 
-const MUX_TokenID = import.meta.env.VITE_MUX_TOKEN_ID;
-const MUX_SecretKEY = import.meta.env.VITE_MUX_SECRET_KEY;
 
-export const muxApi = new MuxApi("https://api.mux.com", MUX_TokenID, MUX_SecretKEY);
+export const api = new Api("http://localhost:3000");

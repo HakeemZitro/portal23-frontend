@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mux/mux-node": "^12.8.1",
     "@mux/mux-player-react": "^3.11.5",
+    "@mux/mux-uploader": "^1.4.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1"
