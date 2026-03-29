@@ -1,0 +1,177 @@
+.footer {
+  padding: 64px 24px;
+  box-sizing: border-box;
+  background-color: #3D3D3D;
+  color: #fff;
+}
+
+.footer__top {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-bottom: 64px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  border-bottom: 1px solid #fff3;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__brand-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer__brand-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.footer__brand-name {
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 32px;
+}
+
+.footer__brand-description {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  color: #fff8;
+  max-width: 400px;
+}
+
+.footer__links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__links-title {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fff;
+}
+
+.footer__links-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__links-link {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer__links-link:hover {
+  color: #D4A853;
+}
+
+.footer__bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__copyright {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff7;
+}
+
+.footer__love-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 4px;
+}
+
+.footer__love {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff7;
+}
+
+.footer__icon {
+  width: 16px;
+  height: 16px;
+  filter: invert(97%) sepia(16%) saturate(5274%) hue-rotate(317deg) brightness(93%) contrast(77%);
+}
+
+.footer__author {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff7;
+}
+
+.footer__author-link {
+  font-family: "Inter", sans-serif;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff7;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.footer__author-link:hover {
+  color: #D4A853;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer__brand {
+    grid-column: span 2;
+  }
+
+  .footer__brand-description {
+    max-width: 100%;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer__love-container {
+    align-items: center;
+  }
+}

@@ -1,0 +1,1019 @@
+.alquimia {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.alquimia__back {
+  position: fixed;
+  bottom: 24px;
+  right: 12px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 2px solid #A67C5277;
+  border-radius: 50px;
+  background-color: #F5F0EBCC;
+  backdrop-filter: blur(6px);
+  color: #A67C52;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.alquimia__back-icon {
+  width: 16px;
+  height: 16px;
+  filter: invert(54%) sepia(44%) saturate(384%) hue-rotate(349deg) brightness(86%) contrast(95%);
+}
+
+.alquimia__back:hover {
+  border-color: #A67C52;
+  background-color: #F5F0EB;
+  box-shadow: 0 0 12px #A67C5299;
+}
+
+.alquimia__back:hover .alquimia__back-icon {
+  animation: alquimiaBackFloat 1s ease infinite;
+}
+
+.alquimia__hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.alquimia__hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  filter: brightness(0.36) saturate(1.2) sepia(0.15);
+}
+
+.alquimia__hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #00000033 0%, #00000066 100%);
+  z-index: 1;
+}
+
+.alquimia__hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 860px;
+  padding: 0 24px;
+}
+
+.alquimia__hero-decoration {
+  margin-bottom: 32px;
+  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #fff6;
+  border-radius: 100px;
+  background-color: #fff4;
+  backdrop-filter: blur(4px);
+}
+
+.alquimia__hero-decoration-icon {
+  width: 20px;
+  height: 20px;
+  filter: invert(97%) sepia(16%) saturate(5274%) hue-rotate(317deg) brightness(93%) contrast(77%);
+}
+
+.alquimia__hero-decoration-text {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 12px;
+  color: #ffffffe7;
+  letter-spacing: 1.4px;
+}
+
+.alquimia__hero-title {
+  margin: 0 0 24px;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 96px;
+  font-weight: 400;
+  line-height: 100%;
+  color: #FFFFFF;
+}
+
+.alquimia__hero-title-accent {
+  font-style: italic;
+  color: #D4A853;
+}
+
+.alquimia__hero-text {
+  margin: 0 0 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
+  color: #FFFFFFBB;
+  max-width: 640px;
+}
+
+.alquimia__hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.alquimia__hero-btn-main {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  background-color: #fff;
+  color: #3D3D3D;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: 0.4s ease;
+  overflow: hidden;
+}
+
+.alquimia__hero-btn-main::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #D4A853;
+  border-radius: 100px;
+  z-index: -1;
+  transition: 0.4s ease;
+}
+
+.alquimia__hero-btn-main:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 32px #D4A85366;
+  color: #fff;
+}
+
+.alquimia__hero-btn-main:hover::before {
+  top: 0;
+  left: 0;
+}
+
+.alquimia__hero-btn-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  background-color: transparent;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  border: 1px solid #fff7;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: 0.4s ease;
+  overflow: hidden;
+}
+
+.alquimia__hero-btn-secondary::before {
+  content: "";
+  position: absolute;
+  top: -101%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff3;
+  border-radius: 100px;
+  z-index: -1;
+  transition: 0.4s ease;
+}
+
+.alquimia__hero-btn-secondary:hover {
+  border-color: #D4A85399;
+  color: #D4A853;
+  background-color: #D4A85311;
+  box-shadow: 0 0 32px #D4A85366;
+  transform: translateY(-3px);
+}
+
+.alquimia__hero-btn-secondary:hover::before {
+  top: 0;
+  left: 0;
+}
+
+.alquimia__intro {
+  padding: 128px 24px;
+  background-color: #FAF8F5;
+}
+
+.alquimia__intro-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.alquimia__intro-label {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  color: #A67C52;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.alquimia__intro-title {
+  margin: 0 0 24px;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 110%;
+  color: #3D3D3D;
+}
+
+.alquimia__intro-title-accent {
+  font-style: italic;
+  color: #C4846C;
+}
+
+.alquimia__intro-text {
+  margin: 0 0 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  color: #3D3D3DB3;
+}
+
+.alquimia__intro-features {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.alquimia__intro-feature {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background-color: #F5F0EB;
+  border-radius: 16px;
+  transition: 0.3s ease;
+}
+
+.alquimia__intro-feature:hover {
+  background-color: #EDE5DB;
+  transform: translateX(4px);
+}
+
+.alquimia__intro-feature-icon-wrap {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #A67C5222;
+  border-radius: 12px;
+}
+
+.alquimia__intro-feature-icon {
+  width: 24px;
+  height: 24px;
+  filter: invert(49%) sepia(30%) saturate(562%) hue-rotate(349deg) brightness(98%) contrast(94%);
+}
+
+.alquimia__intro-feature-title {
+  margin: 0 0 2px;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #3D3D3D;
+}
+
+.alquimia__intro-feature-desc {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #3D3D3D99;
+  line-height: 20px;
+}
+
+.alquimia__intro-right {
+  position: relative;
+}
+
+.alquimia__intro-image-wrap {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 60px #D4A85344;
+  aspect-ratio: 4 / 5;
+}
+
+.alquimia__intro-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.alquimia__intro-image-wrap:hover .alquimia__intro-image {
+  transform: scale(1.05);
+}
+
+.alquimia__categories {
+  padding: 128px 24px;
+  background-color: #F5F0EB;
+}
+
+.alquimia__categories-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.alquimia__categories-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.alquimia__categories-label {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  color: #A67C52;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.alquimia__categories-title {
+  margin: 0;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 100%;
+  color: #3D3D3D;
+}
+
+.alquimia__categories-title-accent {
+  font-style: italic;
+  color: #C4846C;
+}
+
+.alquimia__categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.alquimia__categories-card {
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  padding: 36px 32px;
+  text-align: center;
+  transition: 0.35s ease;
+  border: 1px solid transparent;
+}
+
+.alquimia__categories-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px #D4A85333;
+  border-color: #D4A85333;
+}
+
+.alquimia__categories-card-icon-wrap {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #A67C5222;
+  border-radius: 16px;
+  transition: 0.3s ease;
+}
+
+.alquimia__categories-card:hover .alquimia__categories-card-icon-wrap {
+  background: #A67C5244;
+}
+
+.alquimia__categories-card-icon {
+  width: 28px;
+  height: 28px;
+  filter: invert(49%) sepia(30%) saturate(562%) hue-rotate(349deg) brightness(98%) contrast(94%);
+  transition: 0.3s ease;
+}
+
+.alquimia__categories-card:hover .alquimia__categories-card-icon {
+  scale: 1.15;
+  animation: shake 0.8s ease;
+}
+
+.alquimia__categories-card-title {
+  margin: 0 0 10px;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #3D3D3D;
+}
+
+.alquimia__categories-card-desc {
+  margin: 0 0 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #3D3D3D99;
+}
+
+.alquimia__categories-card-count {
+  display: inline-block;
+  padding: 4px 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #A67C52;
+  background-color: #A67C5215;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+}
+
+.alquimia__courses {
+  padding: 128px 24px;
+  background-color: #2D2D2D;
+  background-image: radial-gradient(circle, #A67C520A 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.alquimia__courses-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.alquimia__courses-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.alquimia__courses-label {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  color: #D4A853;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.alquimia__courses-title {
+  margin: 0;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 100%;
+  color: #FFFFFF;
+}
+
+.alquimia__courses-title-accent {
+  font-style: italic;
+  color: #C4846C;
+}
+
+.alquimia__courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.alquimia__courses-card {
+  background-color: #FFFFFF0C;
+  border: 1px solid #FFFFFF18;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.alquimia__courses-card:hover {
+  transform: translateY(-6px);
+  border-color: #D4A85355;
+  box-shadow: 0 20px 48px #00000044;
+  background-color: #FFFFFF15;
+}
+
+.alquimia__courses-card-image-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.alquimia__courses-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.alquimia__courses-card:hover .alquimia__courses-card-image {
+  transform: scale(1.08);
+}
+
+.alquimia__courses-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.alquimia__courses-card-category {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  color: #D4A853;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.alquimia__courses-card-title {
+  margin: 0 0 10px;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 120%;
+  color: #FFFFFF;
+}
+
+.alquimia__courses-card-desc {
+  margin: 0 0 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  color: #FFFFFF88;
+  flex-grow: 1;
+}
+
+.alquimia__courses-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #FFFFFF15;
+}
+
+.alquimia__courses-card-lessons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: #FFFFFF77;
+}
+
+.alquimia__courses-card-meta-icon {
+  width: 14px;
+  height: 14px;
+  filter: brightness(0) invert(1);
+  opacity: 0.5;
+}
+
+.alquimia__courses-card-duration {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: #FFFFFF77;
+}
+
+.alquimia__courses-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alquimia__courses-card-price {
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #D4A853;
+}
+
+.alquimia__courses-card-btn {
+  padding: 10px 28px;
+  background-color: #A67C52;
+  color: #FFFFFF;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+.alquimia__courses-card-btn:hover {
+  background-color: #8B6744;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px #A67C5244;
+}
+
+.alquimia__why {
+  padding: 128px 24px;
+  background-color: #FAF8F5;
+}
+
+.alquimia__why-container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.alquimia__why-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.alquimia__why-label {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  color: #A67C52;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.alquimia__why-title {
+  margin: 0;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 110%;
+  color: #3D3D3D;
+}
+
+.alquimia__why-title-accent {
+  font-style: italic;
+  color: #C4846C;
+}
+
+.alquimia__why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.alquimia__why-card {
+  padding: 40px 36px;
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid #D4A85312;
+  transition: 0.35s ease;
+}
+
+.alquimia__why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px #D4A85322;
+  border-color: #D4A85333;
+}
+
+.alquimia__why-card-icon-wrap {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F5F0EB;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  transition: 0.3s ease;
+}
+
+.alquimia__why-card:hover .alquimia__why-card-icon-wrap {
+  background-color: #A67C5222;
+}
+
+.alquimia__why-card-icon {
+  width: 26px;
+  height: 26px;
+  filter: invert(49%) sepia(30%) saturate(562%) hue-rotate(349deg) brightness(98%) contrast(94%);
+  transition: 0.3s ease;
+}
+
+.alquimia__why-card:hover .alquimia__why-card-icon {
+  scale: 1.15;
+  animation: shake 0.8s ease;
+}
+
+.alquimia__why-card-title {
+  margin: 0 0 10px;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #3D3D3D;
+}
+
+.alquimia__why-card-desc {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 26px;
+  color: #3D3D3D99;
+}
+
+.alquimia__testimonials {
+  padding: 128px 24px;
+  background-color: #F5F0EB;
+}
+
+.alquimia__testimonials-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.alquimia__testimonials-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.alquimia__testimonials-label {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  color: #A67C52;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.alquimia__testimonials-title {
+  margin: 0;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 100%;
+  color: #3D3D3D;
+}
+
+.alquimia__testimonials-title-accent {
+  font-style: italic;
+  color: #C4846C;
+}
+
+.alquimia__testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.alquimia__testimonials-card {
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  padding: 40px 32px 32px;
+  position: relative;
+  transition: 0.35s ease;
+  border: 1px solid transparent;
+}
+
+.alquimia__testimonials-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px #D4A85322;
+  border-color: #D4A85333;
+}
+
+.alquimia__testimonials-card-quote-icon {
+  width: 32px;
+  height: 32px;
+  filter: invert(72%) sepia(27%) saturate(632%) hue-rotate(349deg) brightness(85%) contrast(82%);
+  opacity: 0.4;
+  margin-bottom: 16px;
+}
+
+.alquimia__testimonials-card-text {
+  margin: 0 0 24px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 26px;
+  color: #3D3D3DBB;
+  font-style: italic;
+}
+
+.alquimia__testimonials-card-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 2px solid #F5F0EB;
+}
+
+.alquimia__testimonials-card-avatar {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #D4A853;
+}
+
+.alquimia__testimonials-card-name {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3D3D3D;
+}
+
+.alquimia__testimonials-card-course {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: #A67C52;
+  margin-top: 2px;
+}
+
+@keyframes alquimiaBackFloat {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-8px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  25%, 75% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+@media screen and (max-width: 1024px) {
+  .alquimia__intro-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .alquimia__intro-right {
+    order: -1;
+  }
+
+  .alquimia__intro-image-wrap {
+    aspect-ratio: 16 / 9;
+  }
+
+  .alquimia__categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .alquimia__courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .alquimia__hero {
+    height: 80vh;
+    min-height: 480px;
+  }
+
+  .alquimia__hero-title {
+    font-size: 52px;
+  }
+
+  .alquimia__hero-text {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .alquimia__intro {
+    padding: 80px 24px;
+  }
+
+  .alquimia__intro-title {
+    font-size: 36px;
+  }
+
+  .alquimia__categories {
+    padding: 80px 24px;
+  }
+
+  .alquimia__categories-title {
+    font-size: 40px;
+  }
+
+  .alquimia__courses {
+    padding: 80px 24px;
+  }
+
+  .alquimia__courses-title {
+    font-size: 40px;
+  }
+
+  .alquimia__courses-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .alquimia__why {
+    padding: 80px 24px;
+  }
+
+  .alquimia__why-title {
+    font-size: 40px;
+  }
+
+  .alquimia__why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .alquimia__testimonials {
+    padding: 80px 24px;
+  }
+
+  .alquimia__testimonials-title {
+    font-size: 40px;
+  }
+
+  .alquimia__testimonials-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+}
+
+@media screen and (max-width: 576px) {
+  .alquimia__hero-title {
+    font-size: 38px;
+  }
+
+  .alquimia__hero-decoration-text {
+    font-size: 11px;
+    letter-spacing: 1.4px;
+  }
+
+  .alquimia__hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .alquimia__hero-btn-main,
+  .alquimia__hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .alquimia__intro-title {
+    font-size: 30px;
+  }
+
+  .alquimia__categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .alquimia__categories-title {
+    font-size: 32px;
+  }
+
+  .alquimia__courses-title {
+    font-size: 32px;
+  }
+
+  .alquimia__why-title {
+    font-size: 32px;
+  }
+
+  .alquimia__testimonials-title {
+    font-size: 32px;
+  }
+
+}

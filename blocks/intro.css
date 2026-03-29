@@ -1,0 +1,167 @@
+.intro {
+  box-sizing: border-box;
+  padding: 128px 24px;
+  background-color: #FAF8F5;
+}
+
+.intro__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.intro__images {
+  position: relative;
+  height: 700px;
+}
+
+.intro__image {
+  border-radius: 24px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.intro__image-first {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  box-shadow: 0 0 50px #D4A85333;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.intro__image-second {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 35%;
+  height: 30%;
+  z-index: 2;
+  border: 4px solid #F5F0EB;
+  border-radius: 16px;
+  box-shadow: 5px 5px 20px #D4A85377;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.intro__image-first:hover, .intro__image-second:hover {
+  scale: 1.05;
+}
+
+.intro__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.intro__info-head {
+  margin-bottom: 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  color: #A67C52;
+}
+
+.intro__info-title {
+  margin: 0 0 24px;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 100%;
+  color: #3D3D3D;
+}
+
+.intro__info-title-accent {
+  display: inline;
+  font-style: italic;
+  color: #C4846C;
+}
+
+.intro__info-text {
+  margin: 0 0 24px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #3D3D3DB3;
+}
+
+.intro__info-text:last-of-type {
+  margin-bottom: 32px;
+}
+
+.intro__info-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.intro__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.intro__stat-icon {
+  width: 28px;
+  height: 28px;
+  opacity: 0.8;
+  filter: invert(49%) sepia(30%) saturate(562%) hue-rotate(349deg) brightness(98%) contrast(94%);
+}
+
+.intro__stat-text-accent {
+  margin: 0;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #3D3D3D;
+  line-height: 1;
+}
+
+.intro__stat-text {
+  margin: 5px 0 0;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #3D3D3D80;
+}
+
+@media screen and (max-width: 768px) {
+  .intro__container {
+    grid-template-columns: 1fr;
+  }
+
+  .intro__images {
+    height: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .intro__image-second {
+    right: -15px;
+    bottom: -15px;
+  }
+
+  .intro__info-title {
+    font-size: 38px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .intro__images {
+    height: 350px;
+  }
+
+  .intro__image-second {
+    right: -10px;
+    bottom: -10px;
+  }
+}
