@@ -4,8 +4,10 @@ import iconBook from "../../../../assets/icons/icon_book.svg";
 import iconFolder from "../../../../assets/icons/icon_folder.svg";
 import logo from "../../../../assets/images/logo_wobgblack.webp";
 import userAvatar from "../../../../assets/images/user_avatar.webp";
+import { useUser } from "../../../../contexts/UserContext.jsx";
 
 export default function SidebarUser({ activeSection, onSectionChange }) {
+  const { currentUser, logout } = useUser();
 
   return (
     <aside className="app-sidebar">
@@ -45,9 +47,12 @@ export default function SidebarUser({ activeSection, onSectionChange }) {
       <div className="app-sidebar__user">
         <img src={userAvatar} alt="Avatar de usuario" className="app-sidebar__user-avatar" />
         <div className="app-sidebar__user-info">
-          <span className="app-sidebar__user-name">Hakeem Ortiz</span>
-          <span className="app-sidebar__user-email">example@email.com</span>
+          <span className="app-sidebar__user-name">{currentUser?.name || "Usuario"}</span>
+          <span className="app-sidebar__user-email">{currentUser?.email || "user@email.com"}</span>
         </div>
+        <button type="button" className="app-sidebar__logout-btn" onClick={logout} title="Cerrar sesión">
+          ↩
+        </button>
       </div>
     </aside>
   );

@@ -4,77 +4,103 @@ class Api {
   constructor(baseUrl) {
     this._baseUrl = baseUrl;
 
+    // ----- Rutas predefinidas a la API ----- //
     this._routes = {
-      // ----- Rutas para usuarios ----- //
-      getUser: { method: "GET", path: "/users/me" },
-      updateName: { method: "PATCH", path: "/users/me" },
-      updateAvatar: { method: "PATCH", path: "/users/me/avatar" },
-      
-      getAllAssets: { method: "GET", path: "/assets" },
-      getAssetById: { method: "GET", path: "/assets/:id" },
-      
-
-      // ----- Rutas para administrador ----- //
+      getUserInfo:  { method: "GET", path: "/users/me" },
+      updateUserInfo:  { method: "PATCH", path: "/users/me" },
+      updateUserAvatar: { method: "PATCH", path: "/users/me/avatar" },
+      getAssets: { method: "GET", path: "/assets" },
+      getAssetById: { method: "GET", path: (id) => `/assets/${id}` },
       getAllUsers: { method: "GET", path: "/users" },
-      getUserById: { method: "GET", path: "/users/:id" },
-
+      getUserById: { method: "GET", path: (id) => `/users/${id}` },
       createUploadAssetURL: { method: "POST", path: "/assets/upload-url" },
     }
   }
 
-  _formatAssetDuration(duration) {
+
+  // ----- Método para el manejo de peticiones a la API ----- //
+  _request(routeName, { id = null, body = null } = {}) {
+    const route = this._routes[routeName];
+    const endpoint = typeof route.path === "function" ? route.path(id) : route.path;
+
+    if (!route) {
+      console.log(`API route not found: ${routeName}`);
+    }
+
+    const options = {
+      method: route.method,
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    };
+
+    if (body) {
+      options.body = JSON.stringify(body);
+    }
+
+    return fetch(this._baseUrl + endpoint, options)
+      .then((res => this._checkResponse(res)));
+  }
+
+  // ----- Método para verificar la respuesta de la API ----- //
+  _checkResponse(res) {
+    if (res.ok) return res.json();
+    return Promise.reject({ status: res.status, message: res.statusText });
+  }
+
+  // ----- Método para formatear la duración de los assets ----- //
+  _formatDuration(duration) {
     const minutes = Math.floor(duration / 60);
     const seconds = duration % 60;
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   }
 
-  _request(routeName, { body = null } = {}, token = null) {
-    const route = this._routes[routeName];
 
-    if (!route) { console.log(`Ruta de API no encontrada: ${routeName}`); }
+  getUserInfo() {
+    return this._request("getUserInfo");
+  }
 
+  updateUserInfo({ name }) {
+    return this._request("updateUserInfo", { body: { name } });
+  }
 
-    if (!token) {
-      console.log("Sin autorización, inicia sesión");
-      return Promise.reject({ status: 401, message: "Sin autorización, inicia sesión" });
-    }
-
-    const endpoint = route.path;
-
-    const options = {
-      method: route.method,
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json"
-      }
-    };
-
-
-    if (body) { options.body = JSON.stringify(body); }
-
-    return fetch(this._baseUrl + endpoint, options)
-      .then(res => res.json())
-      .then(assets => assets.data.map(asset => ({
-        id: asset.id,
-        title: asset.meta.title || "Sin título",
-        playback_id: asset.playback_ids[0]?.id || null,
-        status: asset.status,
-        type: asset.resolution_tier === "audio-only" ? "Audio" : "Video",
-        duration: this._formatAssetDuration(Math.floor(asset.duration)),
-        image: asset.resolution_tier === "audio-only" ? iconMusic : `https://image.mux.com/${asset.playback_ids[0]?.id}/thumbnail.jpg`,
-        instructor: "Portal 23"
-      })))
-      .catch((err) => Promise.reject(`Error: ${err.status} / ${err.message}`));
+  updateUserAvatar({ avatar }) {
+    return this._request("updateUserAvatar", { body: { avatar } });
   }
 
   getAssets() {
-    return this._request("getAssets");
+    return this._request("getAssets")
+      .then((data) => (data.data || []).map((asset) => {
+        return {
+          id: asset.id,
+          title: asset.meta?.title || "Sin título - Procesando...",
+          playback_id: asset.playback_ids?.[0]?.id || null,
+          status: asset.status,
+          type: asset.type,
+          duration: this._formatDuration(asset.duration),
+          image: asset.type === "Audio"
+            ? iconMusic
+            : `https://image.mux.com/${asset.playback_ids?.[0]?.id}/thumbnail.jpg`,
+          instructor: "Portal 23",
+        };
+      }));
   }
 
-  createAsset(data) {
-    return this._request("createAsset", { body: data });
+  getAssetById(id) {
+    return this._request("getAssetById", { id });
+  }
+
+  getAllUsers() {
+    return this._request("getAllUsers");
+  }
+
+  getUserById(id) {
+    return this._request("getUserById", { id });
+  }
+
+  createUploadAssetURL() {
+    return this._request("createUploadAssetURL");
   }
 }
 
 
-export const api = new Api("http://localhost:3000");
+export const api = new Api("http://localhost:4000");

@@ -1,12 +1,7 @@
-
-import Popup from "../Popup/Popup.jsx";
-
-import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 
 export default function Navbar() {
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
   const location = useLocation();
 
 
@@ -26,12 +21,11 @@ export default function Navbar() {
           )}
         </div>
         {location.pathname === "/alquimia-digital" ? (
-          <Link to="/app/alquimia-digital" className="navbar__button">Ingresa Ahora</Link>
+          <Link to="/app/alquimia-digital/login" className="navbar__button">Ingresa Ahora</Link>
         ) : (
           <Link to="/alquimia-digital" className="navbar__button">Alquimia Digital</Link>
         )}
       </div>
-      <Popup isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false) } />
     </nav>
   );
 }

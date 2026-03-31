@@ -2,6 +2,7 @@ import Header from "./Header/Header.jsx";
 import Main from "./Main/Main.jsx";
 import Footer from "./Footer/Footer.jsx";
 import AppAlquimiaDigital from "./Main/AlquimiaDigital/AppAlquimiaDigital.jsx";
+import AuthPage from "./Main/AlquimiaDigital/AuthPage/AuthPage.jsx";
 
 import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
@@ -17,6 +18,8 @@ function App() {
     <>
       <Routes>
         <Route path="/app/alquimia-digital" element={<AppAlquimiaDigital />} />
+        <Route path="/app/alquimia-digital/login" element={<AuthPage />} />
+        <Route path="/app/alquimia-digital/register" element={<AuthPage />} />
         <Route path="/*" element={
           <>
             <Header />
