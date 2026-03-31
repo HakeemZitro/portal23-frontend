@@ -3,11 +3,12 @@ import iconLayout from "../../../../assets/icons/icon_layout.svg";
 import iconBook from "../../../../assets/icons/icon_book.svg";
 import iconFolder from "../../../../assets/icons/icon_folder.svg";
 import logo from "../../../../assets/images/logo_wobgblack.webp";
-import userAvatar from "../../../../assets/images/user_avatar.webp";
-import { useUser } from "../../../../contexts/UserContext.jsx";
+import defaultAvatar from "../../../../assets/images/default_avatar.webp";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../../../contexts/CurrentUserContext.js";
 
 export default function SidebarUser({ activeSection, onSectionChange }) {
-  const { currentUser, logout } = useUser();
+  const { currentUser, logout } = useContext(CurrentUserContext);
 
   return (
     <aside className="app-sidebar">
@@ -45,7 +46,7 @@ export default function SidebarUser({ activeSection, onSectionChange }) {
         </ul>
       </nav>
       <div className="app-sidebar__user">
-        <img src={userAvatar} alt="Avatar de usuario" className="app-sidebar__user-avatar" />
+        <img src={currentUser?.avatar || defaultAvatar} alt="Avatar de usuario" className="app-sidebar__user-avatar" />
         <div className="app-sidebar__user-info">
           <span className="app-sidebar__user-name">{currentUser?.name || "Usuario"}</span>
           <span className="app-sidebar__user-email">{currentUser?.email || "user@email.com"}</span>

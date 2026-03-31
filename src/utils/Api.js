@@ -103,4 +103,4 @@ class Api {
 }
 
 
-export const api = new Api("http://localhost:4000");
+export const api = new Api("https://api.alquimia-digital.hzitro.dev");

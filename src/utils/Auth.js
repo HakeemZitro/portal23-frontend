@@ -49,4 +49,4 @@ class Auth {
 }
 
 // ----- Instancia de la clase Auth ----- //
-export const auth = new Auth("http://localhost:4000");
+export const auth = new Auth("https://api.alquimia-digital.hzitro.dev");

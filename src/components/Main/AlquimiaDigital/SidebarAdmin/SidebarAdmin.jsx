@@ -3,10 +3,11 @@ import iconLayout from "../../../../assets/icons/icon_layout.svg";
 import iconUsers from "../../../../assets/icons/icon_users.svg";
 import logo from "../../../../assets/images/logo_wobgblack.webp";
 import userAvatar from "../../../../assets/images/user_avatar.webp";
-import { useUser } from "../../../../contexts/UserContext.jsx";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../../../contexts/CurrentUserContext.js";
 
 export default function SidebarAdmin({ activeSection, onSectionChange }) {
-  const { currentUser, logout } = useUser();
+  const { currentUser, logout } = useContext(CurrentUserContext);
 
   return (
     <aside className="app-sidebar">
