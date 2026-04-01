@@ -1,0 +1,115 @@
+/* Contenedor principal de subida */
+.app-upload__container {
+  margin: auto;
+  padding: 28px;
+  width: 100%;
+  max-width: 650px;
+  height: 100%;
+  max-height: 450px;
+  background-color: #A67C52CC;
+  border-radius: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeUpload 0.4s ease-out forwards;
+}
+
+@keyframes fadeUpload {
+  0% { opacity: 0; transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Modal form constraints */
+.app-upload__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.app-upload__title {
+  color: #3D3D3D;
+  margin: 0;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.app-upload__label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  color: #fffb;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.app-upload__input {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.app-upload__input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.app-upload__input:focus {
+  border-color: #D4A853;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px rgba(212, 168, 83, 0.3);
+}
+
+.app-upload__submit {
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: none;
+  background-color: #D4A853;
+  color: #3D3D3D;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.app-upload__submit:hover:not(:disabled) {
+  background-color: #bea159;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.app-upload__submit:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.app-upload__submit:disabled {
+  background-color: #A67C52;
+  color: rgba(61, 61, 61, 0.6);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Centrado del widget orgánico de MuxUploader */
+.app-upload__mux {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+mux-uploader {
+  --uploader-font-family: inherit;
+  --uploader-background-color: rgba(255, 255, 255, 0.05);
+  width: 100%;
+}

@@ -5,6 +5,15 @@ Repositorio para el FrontEnd de:
 - Una aplicación de cursos online para convertirte en maestro de Ceremonias Hólisticas "Alquimia Digital" (ruta "localhost:3210/app/alquimia-digital").
 
 
+## Prueba la App Ahora (Pasos a Seguir)
+
+1. Ve al codigo del repositorio en GitHub: https://github.com/HakeemZitroFx/portal23-frontend
+2. En la barra lateral derecha, ve a "Deployments".
+3. Haz clic en el enlace de la última implementación.
+4. La app se abrira en blanco pero no te preocupes, es solo un problema de despliegue con GitHub.
+5. Navega con el navbar (El boton de "Alquimia Digital" llevará primero a la web, luego al login de la app).
+
+
 ## Tecnologías Utilizadas
 
 - **Vite** - Build tool

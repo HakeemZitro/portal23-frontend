@@ -4,7 +4,6 @@ import CeremoniaSanacionDelLinaje from "./Pages/CeremoniaSanacionDelLinaje.jsx";
 import CeremoniaUnionDeAlmas from "./Pages/CeremoniaUnionDeAlmas.jsx";
 import CeremoniaVueltaAlSol from "./Pages/CeremoniaVueltaAlSol.jsx";
 import AlquimiaDigital from "./Pages/AlquimiaDigital.jsx";
-import AppAlquimiaDigital from "./AlquimiaDigital/AppAlquimiaDigital.jsx";
 
 import { Routes, Route } from 'react-router-dom';
 
