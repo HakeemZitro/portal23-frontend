@@ -3,8 +3,10 @@ import SidebarAdmin from "./SidebarAdmin/SidebarAdmin.jsx";
 import Content from "./Content/Content.jsx";
 
 import { useState, useEffect, useCallback } from "react";
+import { Navigate } from "react-router-dom";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext.js";
 import { api } from "../../../utils/Api.js";
+import { auth } from "../../../utils/auth.js";
 
 
 export default function AppAlquimiaDigital() {
@@ -42,18 +44,24 @@ export default function AppAlquimiaDigital() {
   }, [verifySession]);
 
   async function login(email, password) {
-    await api.login({ email, password });
+    await auth.login({ email, password });
     verifySession();
   }
 
   async function signup(name, email, password) {
-    await api.signup({ name, email, password });
+    await auth.register({ name, email, password });
     await login(email, password);
   }
 
-  function logout() {
-    setCurrentUser(null);
-    setIsAdmin(false);
+  async function logout() {
+    try {
+      await auth.logout();
+    } catch (err) {
+      console.error("Error al cerrar sesión", err);
+    } finally {
+      setCurrentUser(null);
+      setIsAdmin(false);
+    }
   }
 
   const isLoggedIn = !!currentUser;
@@ -90,23 +98,19 @@ export default function AppAlquimiaDigital() {
     );
   }
 
+  if (!isLoggedIn) {
+    return <Navigate to="/app/alquimia-digital/login" replace />;
+  }
+
   return (
-    <CurrentUserContext.Provider
-      value={{ currentUser, isLoggedIn, isAdmin, isLoading: authLoading, login, signup, logout }}
-    >
+    <CurrentUserContext.Provider value={{ currentUser, isLoggedIn, isAdmin, isLoading: authLoading, login, signup, logout }}>
       <div className="app">
         {isAdmin ? (
           <SidebarAdmin activeSection={activeSection} onSectionChange={setActiveSection} />
         ) : (
           <SidebarUser activeSection={activeSection} onSectionChange={setActiveSection} />
         )}
-        <Content
-          activeSection={activeSection}
-          assets={assets}
-          ownedAssets={ownedAssets}
-          addOwnedAsset={addOwnedAsset}
-          isLoading={isLoading}
-        />
+        <Content activeSection={activeSection} assets={assets} ownedAssets={ownedAssets} addOwnedAsset={addOwnedAsset} isLoading={isLoading} />
       </div>
     </CurrentUserContext.Provider>
   );

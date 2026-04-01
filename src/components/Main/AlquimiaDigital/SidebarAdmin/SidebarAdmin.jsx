@@ -2,7 +2,6 @@ import iconUpload from "../../../../assets/icons/icon_upload.svg";
 import iconLayout from "../../../../assets/icons/icon_layout.svg";
 import iconUsers from "../../../../assets/icons/icon_users.svg";
 import logo from "../../../../assets/images/logo_wobgblack.webp";
-import userAvatar from "../../../../assets/images/user_avatar.webp";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../../../contexts/CurrentUserContext.js";
 
@@ -38,10 +37,10 @@ export default function SidebarAdmin({ activeSection, onSectionChange }) {
         </ul>
       </nav>
       <div className="app-sidebar__user">
-        <img src={userAvatar} alt="Avatar de usuario" className="app-sidebar__user-avatar" />
+        <img src={currentUser?.avatar} alt="Avatar de usuario" className="app-sidebar__user-avatar" />
         <div className="app-sidebar__user-info">
-          <span className="app-sidebar__user-name">{currentUser?.name || "Admin"}</span>
-          <span className="app-sidebar__user-email">{currentUser?.email || "admin@email.com"}</span>
+          <span className="app-sidebar__user-name">{currentUser?.name}</span>
+          <span className="app-sidebar__user-email">{currentUser?.email}</span>
         </div>
         <button type="button" className="app-sidebar__logout-btn" onClick={logout} title="Cerrar sesión">
           ↩

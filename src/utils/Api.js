@@ -69,14 +69,14 @@ class Api {
 
   getAssets() {
     return this._request("getAssets")
-      .then((data) => (data.data || []).map((asset) => {
+      .then((data) => (data || []).map((asset) => {
         return {
           id: asset.id,
-          title: asset.meta?.title || "Sin título - Procesando...",
+          title: asset.title || "Sin título - Procesando...",
           playback_id: asset.playback_ids?.[0]?.id || null,
           status: asset.status,
           type: asset.type,
-          duration: this._formatDuration(asset.duration),
+          duration: this._formatDuration(Math.floor(asset.duration) || 0),
           image: asset.type === "Audio"
             ? iconMusic
             : `https://image.mux.com/${asset.playback_ids?.[0]?.id}/thumbnail.jpg`,

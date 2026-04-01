@@ -8,13 +8,17 @@ const UploadAsset = () => {
 
   useEffect(() => {
     api.createUploadAssetURL()
-      .then((data) => setUploadUrl(data.url))
+      .then((data) => setUploadUrl(data.upload_url))
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <div className="app-upload__container">
-      <MuxUploader endpoint={uploadUrl} />
+      {uploadUrl ? (
+        <MuxUploader endpoint={uploadUrl} />
+      ) : (
+        <p>Generando enlace de subida...</p>
+      )}
     </div>
   );
 };

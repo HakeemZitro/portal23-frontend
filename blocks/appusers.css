@@ -1,0 +1,161 @@
+.app-users__top {
+  margin-bottom: 32px;
+}
+
+.app-users__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-users__title {
+  margin: 0;
+  font-family: "Cormorant", "Georgia", serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #3D3D3D;
+  line-height: 100%;
+}
+
+/* Loader */
+.app-users__loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.app-users__loader {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: #8b5cf6;
+  border-radius: 50%;
+  animation: app-spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+.app-users__loader-text {
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+@keyframes app-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Grid de Usuarios */
+.app-users__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.app-users__card {
+  background-color: #A67C52DD;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.app-users__card:hover {
+  transform: translateY(-5px);
+  background-color: #A67C52;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  border-color: #A67C5233;
+}
+
+.app-users__avatar-container {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease;
+}
+
+.app-users__card:hover .app-users__avatar-container {
+  border-color: #D4A853;
+}
+
+.app-users__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-users__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.app-users__name {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-users__email {
+  color: #fff;
+  font-size: 12px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-users__role-container {
+  margin-top: 0.75rem;
+}
+
+.app-users__role {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fffb;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.app-users__role_admin {
+  background-color: rgba(139, 92, 246, 0.15);
+  color: #fff;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.app-users__card:hover .app-users__role_admin {
+  background-color: rgba(139, 92, 246, 0.25);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .app-users__grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app-users__grid {
+    grid-template-columns: 1fr;
+  }
+}

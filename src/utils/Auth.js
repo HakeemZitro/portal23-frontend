@@ -5,7 +5,8 @@ class Auth {
     // ----- Rutas predefinidas a la API ----- //
     this._routes = {
       register:  { method: "POST", path: "/register" },
-      login: { method: "POST", path: "/login" }
+      login: { method: "POST", path: "/login" },
+      logout: { method: "POST", path: "/logout" }
     }
   }
 
@@ -23,8 +24,11 @@ class Auth {
       method: route.method,
       credentials: "include",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
     };
+
+    if (body) {
+      options.body = JSON.stringify(body);
+    }
 
     return fetch(this._baseUrl + endpoint, options)
     .then((res => this._checkResponse(res)))
@@ -45,6 +49,10 @@ class Auth {
 
   login({ email, password }) {
     return this._request("login", { body: { email, password } });
+  }
+  
+  logout() {
+    return this._request("logout");
   }
 }
 
