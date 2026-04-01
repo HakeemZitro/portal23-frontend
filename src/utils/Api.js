@@ -71,15 +71,15 @@ class Api {
     return this._request("getAssets")
       .then((data) => (data || []).map((asset) => {
         return {
-          id: asset.id,
+          id: asset._id,
           title: asset.title || "Sin título - Procesando...",
-          playback_id: asset.playback_ids?.[0]?.id || null,
+          playback_id: asset.playback_id,
           status: asset.status,
           type: asset.type,
           duration: this._formatDuration(Math.floor(asset.duration) || 0),
           image: asset.type === "Audio"
             ? iconMusic
-            : `https://image.mux.com/${asset.playback_ids?.[0]?.id}/thumbnail.jpg`,
+            : `https://image.mux.com/${asset.playback_id}/thumbnail.jpg`,
           instructor: "Portal 23",
         };
       }));

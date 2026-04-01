@@ -21,7 +21,7 @@ export default function Navbar() {
           )}
         </div>
         {location.pathname === "/alquimia-digital" ? (
-          <Link to="/app/alquimia-digital/login" className="navbar__button">Ingresa Ahora</Link>
+          <Link to="/app/alquimia-digital" className="navbar__button">Ingresa Ahora</Link>
         ) : (
           <Link to="/alquimia-digital" className="navbar__button">Alquimia Digital</Link>
         )}

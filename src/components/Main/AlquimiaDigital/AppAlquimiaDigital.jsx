@@ -2,71 +2,20 @@ import SidebarUser from "./SidebarUser/SidebarUser.jsx";
 import SidebarAdmin from "./SidebarAdmin/SidebarAdmin.jsx";
 import Content from "./Content/Content.jsx";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext.js";
 import { api } from "../../../utils/Api.js";
-import { auth } from "../../../utils/auth.js";
 
 
 export default function AppAlquimiaDigital() {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [authLoading, setAuthLoading] = useState(true);
+  const { isLoggedIn, isAdmin, authLoading } = useContext(CurrentUserContext);
 
   const [activeSection, setActiveSection] = useState("dashboard");
   const [assets, setAssets] = useState([]);
   const [ownedAssets, setOwnedAssets] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const verifySession = useCallback(() => {
-    setAuthLoading(true);
-
-    api.getUserInfo()
-      .then((userData) => {
-        setCurrentUser(userData);
-        if(userData.role === "AdminOnly") {
-          setIsAdmin(true);
-        }
-      })
-      .catch((err) => {
-        console.error("Error al verificar sesión:", err);
-        setCurrentUser(null);
-        setIsAdmin(false);
-      })
-      .finally(() => {
-        setAuthLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    verifySession();
-  }, [verifySession]);
-
-  async function login(email, password) {
-    await auth.login({ email, password });
-    verifySession();
-  }
-
-  async function signup(name, email, password) {
-    await auth.register({ name, email, password });
-    await login(email, password);
-  }
-
-  async function logout() {
-    try {
-      await auth.logout();
-    } catch (err) {
-      console.error("Error al cerrar sesión", err);
-    } finally {
-      setCurrentUser(null);
-      setIsAdmin(false);
-    }
-  }
-
-  const isLoggedIn = !!currentUser;
-
-  // Cuando se resuelve la autenticación, establecer sección inicial
   useEffect(() => {
     if (!authLoading) {
       setActiveSection(isAdmin ? "uploadAsset" : "dashboard");
@@ -103,15 +52,13 @@ export default function AppAlquimiaDigital() {
   }
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, isLoggedIn, isAdmin, isLoading: authLoading, login, signup, logout }}>
-      <div className="app">
-        {isAdmin ? (
-          <SidebarAdmin activeSection={activeSection} onSectionChange={setActiveSection} />
-        ) : (
-          <SidebarUser activeSection={activeSection} onSectionChange={setActiveSection} />
-        )}
-        <Content activeSection={activeSection} assets={assets} ownedAssets={ownedAssets} addOwnedAsset={addOwnedAsset} isLoading={isLoading} />
-      </div>
-    </CurrentUserContext.Provider>
+    <div className="app">
+      {isAdmin ? (
+        <SidebarAdmin activeSection={activeSection} onSectionChange={setActiveSection} />
+      ) : (
+        <SidebarUser activeSection={activeSection} onSectionChange={setActiveSection} />
+      )}
+      <Content activeSection={activeSection} assets={assets} ownedAssets={ownedAssets} addOwnedAsset={addOwnedAsset} isLoading={isLoading} />
+    </div>
   );
 }

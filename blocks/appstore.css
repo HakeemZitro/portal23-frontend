@@ -102,7 +102,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  transition: 0.3s ease;
+  transition: background-color 0.3s ease;
   box-shadow: 0 2px 8px #3D3D3D06;
 }
 
