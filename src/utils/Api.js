@@ -97,8 +97,8 @@ class Api {
     return this._request("getUserById", { id });
   }
 
-  createUploadAssetURL() {
-    return this._request("createUploadAssetURL");
+  createUploadAssetURL({ title }) {
+    return this._request("createUploadAssetURL", { body: { title } });
   }
 }
 
