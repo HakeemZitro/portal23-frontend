@@ -2,7 +2,7 @@ import iconPlus from "../../../../../assets/icons/icon_plus.svg";
 
 import { useState } from "react";
 
-export default function store({ assets, addOwnedAsset, isLoading }) {
+export default function Store({ assets, addOwnedAsset, isLoading }) {
   const [activeTab, setActiveTab] = useState("ongoing");
 
   return (

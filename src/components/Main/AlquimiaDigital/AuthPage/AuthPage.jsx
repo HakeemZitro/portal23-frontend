@@ -1,25 +1,25 @@
-import loginImage from "../../assets/images/login.webp";
-import registerImage from "../../assets/images/register.webp";
+import loginImage from "../../../../assets/images/login.webp";
+import registerImage from "../../../../assets/images/register.webp";
 
-import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Login from "./Login/Login.jsx";
 import Register from "./Register/Register.jsx";
 
-export default function Popup({ isOpen, onClose }) {
-  const [isLogin, setIsLogin] = useState(true);
-
-  if (!isOpen) return null;
+export default function AuthPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isLogin = location.pathname === "/app/alquimia-digital/login";
 
   return (
-    <div className="auth-modal-overlay" onClick={onClose}>
+    <div className="auth-modal-overlay">
       <div className={`auth-modal-wrapper ${isLogin ? 'show-login' : 'show-register'}`} onClick={(e) => e.stopPropagation()}>
         <div className="auth-modal-sides">
           <div className="auth-modal-form-side">
             <div className={`auth-form-container ${isLogin ? 'active' : 'inactive'}`}>
-              <Login onSwitchToRegister={() => setIsLogin(false)} />
+              <Login onSwitchToRegister={() => navigate("/app/alquimia-digital/register")} />
             </div>
             <div className={`auth-form-container ${!isLogin ? 'active' : 'inactive'}`}>
-              <Register onSwitchToLogin={() => setIsLogin(true)} />
+              <Register onSwitchToLogin={() => navigate("/app/alquimia-digital/login")} />
             </div>
           </div>
           <div className="auth-modal-image-side">
